@@ -56,7 +56,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>WhatsApp Profile Pictures & Statuses</h1>
+      <h1>WhatsApp Profile Pictures & Statuses V.1.0</h1>
       <p style={color=green}>Accessing only public profiles. 100% secure.</p> {/* Added message */}
       <span>If you find this app useful, please give it a star on GitHub: </span> {/* Added message */}
       <a href="https://github.com/Its-me-nishmal/wa-web-react" target="_blank" rel="noopener noreferrer">
