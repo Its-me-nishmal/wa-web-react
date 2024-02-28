@@ -1,4 +1,3 @@
-// App.js
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
@@ -58,9 +57,14 @@ function App() {
   return (
     <div className="App">
       <h1>WhatsApp Profile Pictures & Statuses</h1>
+      <p>Accessing only public profiles. 100% secure.</p> {/* Added message */}
+      <p>If you find this app useful, please give it a star on GitHub:</p> {/* Added message */}
+      <a href="https://github.com/Its-me-nishmal/wa-web-react" target="_blank" rel="noopener noreferrer">
+        <img src="https://img.shields.io/github/stars/Its-me-nishmal/wa-web-react.svg?style=social" alt="GitHub stars" />
+      </a> {/* GitHub button */}
       <form onSubmit={handleSubmit}>
         <div className="input-container">
-          <input type="text" value={inputNumbers} onChange={handleInputChange} placeholder="Enter WhatsApp Numbers" />
+          <input type="text" value={inputNumbers} onChange={handleInputChange} placeholder="Enter WhatsApp Numbers with country code" />
           <button type="submit">Fetch Data</button>
         </div>
       </form>
@@ -79,6 +83,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;
