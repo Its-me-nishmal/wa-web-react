@@ -68,7 +68,8 @@ function App() {
       <div className="whatsapp-data">
         {whatsappData.map((contact, index) => (
           <div key={index} className="contact">
-            <img src={contact.profilePictureUrl} alt="Profile" />
+            <img src={contact.profilePictureUrl || 'https://easimages.basnop.com/default-image_600.png'} alt="Profile" />
+            <p>Number: {contact.number || 'Not a Valid Number'}</p>
             <p>Status: {contact.status.status || 'No status'}</p>
             <p>Last Updated: {new Date(contact.status.setAt).toLocaleString()}</p>
             <button onClick={() => handleDownload(contact.profilePictureUrl, contact.status.status)}>Download</button>
