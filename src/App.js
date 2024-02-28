@@ -3,8 +3,7 @@ import './App.css';
 
 function App() {
   const [whatsappData, setWhatsappData] = useState([]);
-  const [inputCountryCode, setInputCountryCode] = useState('');
-  const [inputNumber, setInputNumber] = useState('');
+  const [inputNumbers, setInputNumbers] = useState('');
 
   useEffect(() => {
     fetchData();
@@ -12,7 +11,7 @@ function App() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}?nums=${inputCountryCode}${inputNumber}`);
+      const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}?nums=${inputNumbers}`);
       const data = await response.json();
       setWhatsappData(data);
     } catch (error) {
@@ -21,11 +20,7 @@ function App() {
   };
 
   const handleInputChange = (event) => {
-    setInputNumber(event.target.value);
-  };
-
-  const handleCountryCodeChange = (event) => {
-    setInputCountryCode(event.target.value);
+    setInputNumbers(event.target.value);
   };
 
   const handleSubmit = (event) => {
@@ -62,17 +57,15 @@ function App() {
   return (
     <div className="App">
       <h1>WhatsApp Profile Pictures & Statuses</h1>
-      <p>Accessing only public profiles. 100% secure.</p>
-      <p>If you find this app useful, please give it a star on GitHub:</p>
+      <p style={color=green}>Accessing only public profiles. 100% secure.</p> {/* Added message */}
+      <span>If you find this app useful, please give it a star on GitHub: </span> {/* Added message */}
       <a href="https://github.com/Its-me-nishmal/wa-web-react" target="_blank" rel="noopener noreferrer">
         <img src="https://img.shields.io/github/stars/Its-me-nishmal/wa-web-react.svg?style=social" alt="GitHub stars" />
-      </a>
+      </a> {/* GitHub button */}
       <form onSubmit={handleSubmit}>
         <div className="input-container">
-          <input type="text" value={inputCountryCode} onChange={handleCountryCodeChange} placeholder="Country Code" />
-          "Connect Globally: Enter Country Code & Number, Search Multiple with Commas!"
-          <input type="text" value={inputNumber} onChange={handleInputChange} placeholder="Enter WhatsApp Number" />
-          <button type="submit">Fetch Data</button>
+          <input type="text" value={inputNumbers} onChange={handleInputChange} placeholder="9187...,9124...,99444..." />
+          <button type="submit">Find Profiles</button>
         </div>
       </form>
       <button onClick={handleDownloadAll}>Download All</button>
